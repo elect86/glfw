@@ -3,19 +3,22 @@ import glfw.*
 
 fun main(args: Array<String>) {
 
+    println("ciao")
     /* Initialize the library */
     if (glfwInit() == 0)
         return
 
     /* Create a windowed mode window and its OpenGL context */
     val window = glfwCreateWindow(640, 480, "Hello World", null, null)
-    if (window != null) {
+    if (window == null) {
         glfwTerminate()
         return
     }
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window)
+
+    glClearColor(1f, 0.5f, 0f, 1f)
 
     /* Loop until the user closes the window */
     while (glfwWindowShouldClose(window) == 0) {

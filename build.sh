@@ -4,8 +4,8 @@ DIR=.
 PATH=../kotlin-native/dist/bin:$PATH
 
 # -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-network -lcsfml-system
-LINKER_ARGS_linux="-L/usr/lib/x86_64-linux-gnu -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-network -lcsfml-system"
-LINKER_ARGS_macbook="-L/usr/local/lib -lcsfml-graphics -lcsfml-audio -lcsfml-window -lcsfml-network -lcsfml-system"
+LINKER_ARGS_linux="-L/usr/lib/x86_64-linux-gnu -lglfw -lGL"
+LINKER_ARGS_macbook="-L/usr/local/lib -lglfw"
 
 if [ x$TARGET == x ]; then
 case "$OSTYPE" in

@@ -1,5 +1,6 @@
 import kotlinx.cinterop.*
 import glfw.*
+import kotlin.system.*
 
 fun main(args: Array<String>) {
 
@@ -15,10 +16,16 @@ fun main(args: Array<String>) {
         return
     }
 
+    var last = 0L
+    var time = 0L
+    var frames = 0
+
     /* Make the window's context current */
     glfwMakeContextCurrent(window)
 
     glClearColor(1f, 0.5f, 0f, 1f)
+
+    glfwSwapInterval(0)
 
     /* Loop until the user closes the window */
     while (glfwWindowShouldClose(window) == 0) {
@@ -30,6 +37,16 @@ fun main(args: Array<String>) {
 
         /* Poll for and process events */
         glfwPollEvents()
+
+        val now = getTimeMillis()
+        time += now - last
+        last = now
+        frames++
+        if (time > 1000) {
+            time %= 1000
+            glfwSetWindowTitle(window, "fps = $frames")
+            frames = 0
+        }
     }
 
     glfwTerminate()

@@ -1,5 +1,6 @@
-import kotlinx.cinterop.*
-import glfw.*
+package hello
+
+import org.glfw.*
 import kotlin.system.*
 
 fun main(args: Array<String>) {
@@ -26,6 +27,14 @@ fun main(args: Array<String>) {
     glClearColor(1f, 0.5f, 0f, 1f)
 
     glfwSwapInterval(0)
+
+    for (i in 0..999)
+        glfwWindowShouldClose(window)
+
+    println(measureNanoTime {
+        for (i in 0..9999)
+            glfwWindowShouldClose(window)
+    })
 
     /* Loop until the user closes the window */
     while (glfwWindowShouldClose(window) == 0) {

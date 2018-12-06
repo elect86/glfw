@@ -1,4 +1,2 @@
 headers = GLFW/glfw3.h GLFW/glfw3native.h
-compilerOpts =
-excludedFunctions =
 compilerOpts.linux = -I/usr/include
